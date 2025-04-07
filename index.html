@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ============== 輪播css ============== -->
+  <link rel="stylesheet" href="https://media.etmall.com.tw/sp/12500/swiper.min.css">
+<!-- ============== 共用css ============== -->
+  <link rel="stylesheet" href="https://media.etmall.com.tw/sp/12500/animate.min.css">
+  <link rel="stylesheet" href="https://media.etmall.com.tw/sp/12500/generate_v1.3.1.css">
+
+  <!-- [電梯步驟1] 電梯CSS 不用就關掉 -->
+  <!-- 商品左電梯CSS，要使用還要在步驟2開啟左電梯data資料 -->
+  <!-- <link id="localElevatorLeft" rel="stylesheet" href="sp-elevator-left.css"> -->
+
+  <!-- 商品右電梯CSS，步驟2有測試div可以測試 -->
+  <link id="localElevatorRight" rel="stylesheet" href="sp-elevator-right.css">
+  <!-- [電梯步驟1] 電梯CSS END -->
+
+  <!-- 背景特效區塊的css -->
+  <link rel="stylesheet" href="./style.css">
+
+  <style>
+
+    body {
+      position: relative;
+    /* 背景顏色 */
+      background-color: #2c0517;
+    }
+
+    body:before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(bg-m.jpg) center 0 no-repeat;
+      background-size: 100%;
+    }
+
+    @media screen and (min-width:960px) {
+      body:before {
+        background: url(bg.jpg) center 0 no-repeat;
+        background-size: auto;
+      }
+    }
+
+    body.bg-fixed:before {
+      position: fixed;
+      height: 100vh;
+    }
+
+    /* 調整logo位置大小 */
+    /* .logo {
+      top: 1%;
+      left: 1%;
+      width: 30%;
+      max-width: 220px;
+    } */
+
+      /* 連結測試 */
+      /* .sp__visual a{
+        filter: brightness(500%);
+      } */
+
+      /* 切片測試 */
+      /* .visual__fragment::before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #00f;
+        pointer-events: none;
+      } */
+
+    .sp__wallper{
+    overflow: hidden;
+    }
+    /* --- 動畫小物件 --- */
+    .animate__wrap {
+      position: relative;
+      z-index: 1;
+      transform: translateZ(0);
+    }
+
+    /*-- 手機版：設定物件距離左邊與上邊的位置，單位可以使用"%"或"vw";width:建議電腦版可以使用auto，手機版則可使用%調整 --*/
+    .animate__wrap .animate__obj--tt {
+      position: absolute;
+      z-index: -1;
+      top: 4.2vw;
+      left: -9vw;
+      width: 113%;
+    }
+    .animate__wrap .animate__obj--sbt {
+      position: absolute;
+      z-index: -1;
+      top: 38.2vw;
+      left: 0vw;
+      width: 107%;
+    }
+
+    /*-- 電腦版：設定物件距離左邊與上邊的位置，單位可以使用"px"，左邊可以挑整clac()後面的px值;width:建議電腦版可以使用auto，手機版則可使用%調整 --*/
+    @media screen and (min-width:960px) {
+      .animate__wrap .animate__obj--tt {
+        top: 30px;
+        left: calc(50% - 554px);
+        width: auto;
+      }
+      .animate__wrap .animate__obj--sbt {
+        top: 358px;
+        left: calc(50% - 455px);
+        width: auto;
+      }
+    }
+
+  
+    /* --- 動畫小物件 end --- */
+
+     /* --- 滑動Banner start --- */
+    .banner__slider {
+      /* 輪播的父層 */
+      position: relative;
+      z-index: 0
+    }
+
+    .banner__slider .swipersty__banner {
+      position: absolute;
+      z-index: 0;
+      top: 32%;
+      left: 8.2%;
+      width: 83.3%
+    }
+    /* --- 滑動Banner end --- */
+  </style>
+</head>
+
+<!-- 是否要固定背景，不要就拿掉class -->
+<body class="bg-fixed">
+
+  <div class="navRightBar" id="navRightBar"></div>
+  <div class="elevatorHome js--main--dialog" id="elevatorHome"></div>
+  <div id="barHome"></div>
+  <div class="home--icon layout--main" id="iconHome"></div>
+
+  <!-- ====== 背景飄落 start ====== -->
+  <div class="bg-container">
+    <div class="first-layer bg--first"></div>
+    <div class="second-layer bg--second"></div>
+    <div class="third-layer bg--third"></div>
+  </div>
+  <!-- ====== 背景飄落 end ====== -->
+
+  <div class="sp__wallper" id="spWrap">
+    <div class="animate__wrap">
+      <a href="">
+        <img class="animate__animated animate__obj--tt animate__zoomInDown" src="ani-tt.png" alt="測試用文字 正式上線要拿掉">
+        <img class="animate__animated animate__obj--sbt animate__bounce animate__infinite " src="ani-sbt.png" alt="測試用文字 正式上線要拿掉">
+      </a>
+        
+    </div>
+    <main class="sp__main">
+      <div class="layout--main home--logo">
+        <a href="https://www.etmall.com.tw"><img class="logo" src="ehs-logo.png" alt="東森購物"></a>
+      </div>
+
+      <section class="sp__visual">
+        <div class="layout--main">
+          <ul class="visual--auto clearfix" >
+            <li class="visual__fragment width--auto"><a href="#"><img src="index_01.png" alt=""></a></li>
+            <li class="visual__fragment width--auto"><img src="index_02.png" alt="三星-滿額登記第一區"></li>
+            <li class="visual__fragment width--auto"><a href="#"><img src="index_03.png" alt="三星-看更多btn"></a></li>
+            <li class="visual__fragment width--auto"><a href="#"><img src="index_04.png" alt="三星-登記btn"></a></li>
+            <li class="visual__fragment width--auto"><img src="index_05.png" alt="東芝-滿額登記第二區"></li>
+            <li class="visual__fragment width--auto"><a href="#"><img src="index_06.png" alt="東芝-看更多btn"></a></li>
+            <li class="visual__fragment width--auto"><a href="#"><img src="index_07.png" alt="東芝-登記btn"></a></li>
+            <!-- ====== 滑動Banner start ====== -->
+            <section class="banner__slider">
+              <div class="layout--main">
+                <ul class="visual--auto clearfix">
+                  <li class="visual__fragment width--auto"><img src="bn-bg.png" alt="底圖"></li>
+                </ul>
+                <div class="swipersty__banner">
+                  <div class="swiper-container" id="swiperstyBanner">
+                    <ul class="swiper-wrapper">
+                      <li class="swiper-slide"><a href="#" title="第一個banner"><img src="800x300_3.jpg" alt="第一個banner"></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- ====== 滑動Banner end ====== -->
+            <li class="visual__fragment width--auto"><a href="https://media.etmall.com.tw/sp/19733/m/index.html"><img src="index_09.png" alt="指定銀行最高享回饋25%"></a></li>
+            <li class="visual__fragment width--auto"><img src="index_10.png" alt="本月必買bar"></li>
+            <li class="visual__fragment width--auto"><a href="https://www.etmall.com.tw/i/3600151"><img src="index_11.png" alt="三星SAMSUNG 55吋4K聯網電視"></a></li>
+            <li class="visual__fragment width--auto"><a href="https://www.etmall.com.tw/i/3293209"><img src="index_12.png" alt="TOSHIBA東芝65型QLED重低音4K安卓液晶顯示器"></a></li>
+            <li class="visual__fragment width--auto"><a href="https://www.etmall.com.tw/i/3320292"><img src="index_13.png" alt="三星SAMSUNG QLED 75吋4K聯網電視"></a></li>
+            <li class="visual__fragment width--auto"><a href="https://www.etmall.com.tw/i/3263207"><img src="index_14.png" alt="東芝58型4K安卓液晶顯示器"></a></li>
+            <li class="visual__fragment width--auto"><a href="https://www.etmall.com.tw/i/3483243"><img src="index_15.png" alt="三星65吋Neo QLED直下式8K電視"></a></li>
+            <li class="visual__fragment width--auto"><a href="https://www.etmall.com.tw/i/2865254 "><img src="index_16.png" alt="東芝 43型4KHDR安卓智慧聯網三規液晶顯示器"></a></li>
+
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+  <!-- ============== 共用JS ============== -->
+  <script src="https://media.etmall.com.tw/sp/12500/jquery-3.6.0.min.js"></script>
+  <script id="generateScript" src="https://media.etmall.com.tw/sp/12500/generate_v1.2.js"></script>
+
+  <!--[電梯步驟2] 電梯 JS -->
+  <!-- 商品左電梯單機版資料，不用就關掉，要使用還要上方步驟1開啟商品左電梯CSS -->
+  <!-- <script id="dataElevatorLeft" src="data-elevator.js"></script> -->
+
+  <!-- 線上自動切換電梯，無論如何都要有 -->
+  <script id="checkElevator" src="https://media.etmall.com.tw/sp/11911/check-elevator.js"></script>
+  <!-- [電梯步驟2] 電梯 JS END -->
+
+  <!-- [測試區] -->
+  <!-- 測試商品右電梯用，上線前必須關掉-->
+  <!-- <div data-title="ccc"></div> -->
+  <!-- 測試霸道電梯用，開啟時上方自動切換電梯要關閉，這支正式上線時需關閉、上方的要開啟回來 -->
+  <!-- <script id="checkElevator" src="https://media.etmall.com.tw/sp/14841/test-elevator.js?87"></script> -->
+
+
+
+  <!-- ============== 輪播 start ============== -->
+  <script src="https://media.etmall.com.tw/sp/12500/swiper.min.js"></script>
+  <script>
+
+    var promoSliderItem = new Swiper('#swiperstyBanner', {
+      autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+      },
+      grabCursor: true,
+      lazy: {
+        loadPrevNext: true,
+      },
+      loop: true,
+      perspective: true,
+      // effect: "flip",
+      // flipEffect: {
+      //   slideShadows: false,
+      // },
+      slidesPerView: 1,
+      speed: 600,
+      watchSlidesProgress : true,
+      watchSlidesVisibility : true,
+    } );
+  </script>
+  <!-- ============== 輪播 end ============== -->
+  <!-- <script>
+     // 滑動Banner
+  var swiperstyBanner = new Swiper("#swiperstyBanner", {
+    autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+    },
+    autoHeight: true,
+    grabCursor: true,
+    loop: true,
+    speed: 1000,
+  });
+  // 滑動Banner end
+  </script> -->
+
+</body>
+
+</html>

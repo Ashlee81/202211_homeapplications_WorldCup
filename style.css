@@ -1,0 +1,99 @@
+
+/* --- 背景飄落 start --- */
+.bg-container {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+
+  background-size: auto;
+}
+
+.bg-container>div {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0
+}
+
+.bg-container .first-layer {
+  background: url(bg-animate-1.png) center 0;
+}
+
+.bg-container .second-layer {
+  background: url(bg-animate-2.png) center 0;
+}
+
+.bg-container .third-layer {
+  background: url(bg-animate-3.png) center 0;
+}
+
+.bg-container .bg--first {
+  animation: falling-down linear infinite;
+  /* animation-duration調整飄落下來的時間 */
+  animation-duration: 52s
+}
+
+.bg-container .bg--second {
+  transform: translate3d(0, -100%, 0);
+  animation: falling-down-2 linear infinite;
+  animation-duration: 28s
+}
+
+.bg-container .bg--third {
+  transform: translate3d(0, -100%, 0);
+  animation: falling-down-3 linear infinite;
+  animation-duration: 20s
+}
+
+@keyframes falling-down {
+  0% {
+    background-position: 0 0;
+    opacity: 0
+  }
+
+  10%,
+  90% {
+    opacity: 1
+  }
+
+  100% {
+    background-position: 100% 150vh;
+    opacity: 0
+  }
+}
+
+@keyframes falling-down-2 {
+  0% {
+    transform: translate3d(0, -100%, 0)
+  }
+
+  to {
+    /* translate3d(x, y, z)調整飄落下來的位置 */
+    transform: translate3d(15%, 100%, 0)
+  }
+}
+
+@keyframes falling-down-3 {
+  0% {
+    transform: translate3d(0, -100%, 0)
+  }
+
+  50% {
+    transform: translate3d(-10%, 0, 0)
+  }
+
+  to {
+    transform: translate3d(15%, 100%, 0)
+  }
+}
+
+/* --- 背景飄落 end --- */
